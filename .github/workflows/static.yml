@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Марьяна — мой мир</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Orbitron:wght@500;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(circle at 15% 20%,#7c18d8 0%,transparent 25%),
+             radial-gradient(circle at 85% 70%,#ff075f 0%,transparent 25%),
+             linear-gradient(135deg,#130021,#290052 50%,#12001f);
+  color:white;font-family:Comfortaa,sans-serif;overflow-x:hidden;cursor:none
+}
+.cursor-star{position:fixed;pointer-events:none;z-index:9999;color:#dba7ff;font-size:28px;
+  transform:translate(-50%,-50%);filter:drop-shadow(0 0 5px #c66cff) drop-shadow(0 0 15px #a63cff)}
+.star{position:fixed;color:white;pointer-events:none;animation:twinkle 2s infinite alternate;z-index:0}
+@keyframes twinkle{from{opacity:.25;transform:scale(.7)}to{opacity:1;transform:scale(1.2)}}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);width:min(90%,900px);
+  padding:13px 20px;background:rgba(25,0,45,.75);border:1px solid rgba(255,55,145,.5);
+  border-radius:30px;backdrop-filter:blur(15px);display:flex;justify-content:center;gap:28px;
+  z-index:1000;box-shadow:0 0 30px rgba(255,0,120,.2)}
+nav a{color:white;text-decoration:none;font-size:13px;font-weight:700;transition:.25s}
+nav a:hover{color:#ff3985;text-shadow:0 0 12px #ff3985;transform:translateY(-2px)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:110px 8% 70px;position:relative;z-index:1}
+.hero-content{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.hero-text{animation:appear 1s ease}
+@keyframes appear{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.small-title{color:#ff3985;font-size:15px;letter-spacing:3px;margin-bottom:12px}
+h1{font-family:Orbitron,sans-serif;font-size:clamp(55px,9vw,105px);line-height:.9;
+  background:linear-gradient(90deg,#c879ff,#ff247c,#d86cff);-webkit-background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 15px rgba(255,20,130,.35))}
+.hero-text p{margin-top:25px;line-height:1.8;font-size:17px;color:#eee0ff;max-width:520px}
+.buttons{display:flex;gap:15px;margin-top:30px;flex-wrap:wrap}
+.btn{border:none;padding:14px 25px;border-radius:30px;background:linear-gradient(90deg,#7620d9,#ff146b);
+  color:white;font-family:inherit;font-weight:700;cursor:none;transition:.3s;box-shadow:0 0 20px rgba(255,20,120,.3)}
+.btn:hover{transform:translateY(-5px) scale(1.04);box-shadow:0 0 35px rgba(255,30,140,.65)}
+.btn.secondary{background:transparent;border:1px solid #b95cff}
+.photo-box{position:relative;display:flex;justify-content:center}
+.photo-box::before{content:"";position:absolute;width:90%;height:90%;background:#ff176d;
+  filter:blur(70px);opacity:.3;z-index:-1}
+.photo-frame{width:min(420px,90vw);padding:10px;border-radius:35px;
+  background:linear-gradient(135deg,#a644ff,#ff176d,#9d39ff);transform:rotate(3deg);
+  box-shadow:0 0 30px rgba(255,20,120,.4),15px 15px 0 rgba(87,20,130,.5);transition:.5s}
+.photo-frame:hover{transform:rotate(0deg) scale(1.03)}
+.photo-frame img{display:block;width:100%;border-radius:27px}
+section{min-height:80vh;padding:100px 8%;position:relative;z-index:1}
+.section-title{font-family:Orbitron,sans-serif;font-size:clamp(35px,6vw,65px);margin-bottom:50px;
+  background:linear-gradient(90deg,#d283ff,#ff287e);-webkit-background-clip:text;color:transparent}
+.about,.activities,.facts{max-width:1050px;margin:auto}
+.about-box{padding:35px;border:1px solid rgba(214,116,255,.4);border-radius:30px;
+  background:rgba(43,4,72,.65);backdrop-filter:blur(15px);box-shadow:0 0 35px rgba(157,50,255,.15)}
+.about-box p{line-height:1.9;color:#eee3ff;font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{padding:30px;min-height:190px;border-radius:28px;
+  background:linear-gradient(145deg,rgba(103,18,163,.65),rgba(255,12,104,.18));
+  border:1px solid rgba(255,67,153,.35);transition:.35s;position:relative;overflow:hidden}
+.card::after{content:"✦";position:absolute;right:25px;bottom:10px;font-size:60px;color:rgba(255,255,255,.06)}
+.card:hover{transform:translateY(-10px) rotate(-1deg);border-color:#ff3985;box-shadow:0 15px 40px rgba(255,10,120,.25)}
+.card-number{color:#ff3985;font-family:Orbitron;font-size:13px}
+.card h3{margin:15px 0 10px;font-size:25px}.card p{color:#d8c5eb;line-height:1.6}
+.fact-button{display:block;margin:0 auto 35px;padding:15px 30px;border-radius:30px;
+  border:1px solid #ff3985;background:rgba(255,25,115,.1);color:white;font-family:inherit;font-weight:bold;cursor:none}
+.fact{text-align:center;font-size:clamp(22px,4vw,38px);min-height:80px;color:#f7eaff;
+  text-shadow:0 0 20px rgba(255,64,150,.35)}
+.contact{text-align:center;min-height:55vh}
+.email{display:inline-block;margin-top:25px;padding:18px 28px;border-radius:25px;
+  background:linear-gradient(90deg,#7220d7,#ff166d);color:white;text-decoration:none;font-size:18px;
+  font-weight:700;box-shadow:0 0 30px rgba(255,20,120,.3);transition:.3s}
+.email:hover{transform:scale(1.05);box-shadow:0 0 45px rgba(255,20,120,.6)}
+footer{text-align:center;padding:25px;color:#9f85b5;font-size:12px}
+@media(max-width:750px){
+  nav{gap:12px;padding:12px}nav a{font-size:10px}
+  .hero-content{grid-template-columns:1fr;gap:50px;text-align:center}
+  .hero-text p{margin-left:auto;margin-right:auto}.buttons{justify-content:center}
+  .cards{grid-template-columns:1fr}.photo-frame{max-width:330px}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-star">✦</div>
+<div class="star" style="top:8%;left:7%;font-size:18px">✦</div>
+<div class="star" style="top:20%;left:90%;font-size:12px">✦</div>
+<div class="star" style="top:45%;left:5%;font-size:25px">✦</div>
+<div class="star" style="top:65%;left:92%;font-size:20px">✦</div>
+<div class="star" style="top:82%;left:12%;font-size:14px">✦</div>
+<div class="star" style="top:90%;left:82%;font-size:28px">✦</div>
+
+<nav>
+  <a href="#about">Обо мне</a>
+  <a href="#activities">Занятия</a>
+  <a href="#facts">Факты</a>
+  <a href="#contact">Контакты</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="small-title">ПРИВЕТ, ЭТО</div>
+      <h1>МАРЬЯНА</h1>
+      <p>Мне 11 лет, я живу в Астане и люблю пробовать новое — от рисования и танцев до программирования.</p>
+      <div class="buttons">
+        <a href="#about"><button class="btn">Узнать обо мне</button></a>
+        <a href="#activities"><button class="btn secondary">Мои увлечения</button></a>
+      </div>
+    </div>
+    <div class="photo-box">
+      <div class="photo-frame"><img src="photo.jpg" alt="Фото Марьяны"></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <h2 class="section-title">Обо мне</h2>
+    <div class="about-box">
+      <p>
+        Привет! Меня зовут Марьяна. Мне 11 лет, я живу в городе Астана.
+        Я учусь в школе Skillset и люблю развиваться сразу в нескольких направлениях.
+        <br><br>
+        Я занимаюсь рисованием в художественной школе UNESCO, программированием в Astana Hub,
+        а ещё хип-хопом и waacking. Мне нравится создавать что-то своё, учиться новым вещам
+        и превращать идеи в настоящие проекты.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="activities">
+    <h2 class="section-title">Что я делаю</h2>
+    <div class="cards">
+      <div class="card"><div class="card-number">01 / ART</div><h3>Рисование</h3><p>Занимаюсь рисованием в художественной школе UNESCO и развиваю свои творческие идеи.</p></div>
+      <div class="card"><div class="card-number">02 / CODE</div><h3>Программирование</h3><p>Изучаю программирование в Astana Hub и люблю создавать цифровые проекты.</p></div>
+      <div class="card"><div class="card-number">03 / DANCE</div><h3>Хип-хоп</h3><p>Танцую хип-хоп и люблю энергию, музыку и движение.</p></div>
+      <div class="card"><div class="card-number">04 / WAACKING</div><h3>Waacking</h3><p>Ещё одно направление танцев, которое я изучаю и развиваю.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="facts">
+  <div class="facts">
+    <h2 class="section-title">Немного интересного</h2>
+    <button class="fact-button" onclick="newFact()">✦ Показать случайный факт</button>
+    <div class="fact" id="fact">Нажми на кнопку — здесь появится что-нибудь интересное!</div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="section-title">Связаться со мной</h2>
+  <p>Если хочешь написать мне — вот моя почта:</p>
+  <a class="email" href="mailto:m.v.muzychuk@gmail.com">m.v.muzychuk@gmail.com</a>
+</section>
+
+<footer>© 2026 Марьяна ✦</footer>
+
+<script>
+const cursor=document.querySelector(".cursor-star");
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
+
+const facts=[
+  "Я люблю совмещать творчество и технологии ✦",
+  "Я занимаюсь сразу несколькими направлениями танцев.",
+  "Мне нравится создавать собственные проекты.",
+  "Я изучаю программирование в Astana Hub.",
+  "Рисование — одно из моих творческих увлечений.",
+  "Я живу в Астане.",
+  "Я люблю пробовать что-то новое.",
+  "В моём мире есть место и для искусства, и для кода."
+];
+
+function newFact(){
+  const fact=document.getElementById("fact");
+  const random=facts[Math.floor(Math.random()*facts.length)];
+  fact.style.opacity="0";
+  fact.style.transform="translateY(10px)";
+  setTimeout(()=>{
+    fact.textContent=random;
+    fact.style.transition=".4s";
+    fact.style.opacity="1";
+    fact.style.transform="translateY(0)";
+  },200);
+}
+
+const cards=document.querySelectorAll(".card");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity="1";
+      entry.target.style.transform="translateY(0)";
+    }
+  });
+},{threshold:.2});
+
+cards.forEach(card=>{
+  card.style.opacity="0";
+  card.style.transform="translateY(30px)";
+  card.style.transition="opacity .7s,transform .7s";
+  observer.observe(card);
+});
+</script>
+</body>
+</html>
